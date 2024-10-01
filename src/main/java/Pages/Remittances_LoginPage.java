@@ -5,10 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-public class LoginPage extends PageBase
+public class Remittances_LoginPage extends PageBase
 {
 
-    public LoginPage(WebDriver driver)
+    public Remittances_LoginPage(WebDriver driver)
     {
         super(driver);
     }
