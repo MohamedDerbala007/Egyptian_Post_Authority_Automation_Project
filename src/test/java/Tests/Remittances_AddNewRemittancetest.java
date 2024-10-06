@@ -4,6 +4,8 @@ import Pages.Remittances_AddNewRemittancePage;
 import Pages.Remittances_HomePage;
 import Pages.Remittances_LoginPage;
 import TestBases.Remittances_TestBase;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -36,11 +38,42 @@ public class Remittances_AddNewRemittancetest extends Remittances_TestBase
         wait.until(ExpectedConditions.visibilityOf(addNewRemittancePageObject.senderIdenTypeDDL));
         addNewRemittancePageObject = new Remittances_AddNewRemittancePage(driver);
         addNewRemittancePageObject.chooseIdenTypeForSender();
-
-        wait.until(ExpectedConditions.visibilityOf(addNewRemittancePageObject.senderIDTxtBox));
-        addNewRemittancePageObject = new Remittances_AddNewRemittancePage(driver);
         addNewRemittancePageObject.insertSenderID();
         addNewRemittancePageObject.searchForSenderID();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOf(addNewRemittancePageObject.receiverIdenTypeDDL));
+        addNewRemittancePageObject = new Remittances_AddNewRemittancePage(driver);
+        addNewRemittancePageObject.chooseIdenTypeForReceiver();
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOf(addNewRemittancePageObject.receiverIDTxtBox));
+        addNewRemittancePageObject.insertReceiverID();
+        addNewRemittancePageObject.searchForReceiverID();
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOf(addNewRemittancePageObject.bigValueTxtBox));
+        addNewRemittancePageObject.insertTheBigValueofTheAmount();
+        addNewRemittancePageObject.confirmTheAmount();
+        Thread.sleep(2000);
+        addNewRemittancePageObject.chooseReasonForTheTransaction();
+        wait.until(ExpectedConditions.elementToBeClickable(addNewRemittancePageObject.submitBtn));
+        addNewRemittancePageObject.submitTheRemittanceTransaction();
+        wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+        Thread.sleep(2000);
+
+        String originalWindow = driver.getWindowHandle();
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!originalWindow.equals(windowHandle)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+
+        wait.until(ExpectedConditions.visibilityOf(addNewRemittancePageObject.transactionReceipt));
+        Assert.assertTrue(addNewRemittancePageObject.transactionReceipt.isDisplayed());
+
+        driver.close();
+        driver.switchTo().window(originalWindow);
     }
-}
+    }
+
