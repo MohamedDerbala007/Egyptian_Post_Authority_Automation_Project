@@ -1,48 +1,92 @@
 package Tests;
 
 import Pages.Remittances_AddNewRemittancePage;
+import Pages.Remittances_ExportedRemittancesReportPage;
 import Pages.Remittances_HomePage;
 import Pages.Remittances_LoginPage;
 import TestBases.Remittances_TestBase;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.openqa.selenium.JavascriptExecutor;
 
-public class Remittances_AddNewRemittancetest extends Remittances_TestBase
-{
-    Remittances_LoginPage loginPageObject;
+public class Remittances_AddNewRemittancetest extends Remittances_TestBase {
+	Remittances_LoginPage loginPageObject;
     Remittances_HomePage homePageObject;
     Remittances_AddNewRemittancePage addNewRemittancePageObject;
+    Remittances_ExportedRemittancesReportPage exportedRemittancesReportPageObject;
     String userName = "عمر ابراهيم احمد";
     String password = "q1234567890";
+    String reportType = "نهاية اليوم)الحوالات المصدرة 6 حوالات فورية)";
 
     @Test
-    public void userCanAddNewRemittanceSuccessfully() throws InterruptedException
-    {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public void userCanAddNewRemittanceSuccessfully() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        JavascriptExecutor js = (JavascriptExecutor) driver;  
+        Thread.sleep(5000);
 
         loginPageObject = new Remittances_LoginPage(driver);
         loginPageObject.userLogin(userName, password);
 
         homePageObject = new Remittances_HomePage(driver);
+
+        String extractedDate = "";
+        try {
+            wait.until(ExpectedConditions.alertIsPresent());
+            Alert alert = driver.switchTo().alert();
+            String alertMessage = alert.getText();
+
+            String datePattern = "\\b(\\d{2}/\\d{2}/\\d{4})\\b";
+            Pattern pattern = Pattern.compile(datePattern);
+            Matcher matcher = pattern.matcher(alertMessage);
+
+            if (matcher.find()) {
+                extractedDate = matcher.group(1);
+                System.out.println("Extracted Date from Alert: " + extractedDate);
+            } else {
+                System.out.println("No date found in the alert message.");
+            }
+
+            alert.accept();
+        } catch (NoAlertPresentException e) {
+            System.out.println("No alert was present.");
+        }
+
+        if (!extractedDate.isEmpty()) {
+
+            String formattedDate = extractedDate.replace("/", "-");
+
+            js.executeScript("arguments[0].value='" + formattedDate + "';", homePageObject.reportDateField);
+            System.out.println("Date set in the report date field: " + formattedDate);
+            homePageObject = new Remittances_HomePage(driver);
+            homePageObject.displayTheEndDayReportofExportedRemittances(reportType);
+            exportedRemittancesReportPageObject = new Remittances_ExportedRemittancesReportPage(driver);
+            exportedRemittancesReportPageObject.printingTotalRemittancesClosingReport();
+            exportedRemittancesReportPageObject.cancelPrinting();
+            wait.until(ExpectedConditions.alertIsPresent());
+            Alert alert = driver.switchTo().alert();
+            alert.accept();
+            Thread.sleep(10000);
+            exportedRemittancesReportPageObject.exitTheReport();
+        }
+
         wait.until(ExpectedConditions.elementToBeClickable(homePageObject.addNewRemittanceBtn));
         Assert.assertTrue(homePageObject.addNewRemittanceBtn.isDisplayed());
         homePageObject.AddNewRemittance();
 
         addNewRemittancePageObject = new Remittances_AddNewRemittancePage(driver);
         wait.until(ExpectedConditions.visibilityOf(addNewRemittancePageObject.senderIdenTypeDDL));
-        addNewRemittancePageObject = new Remittances_AddNewRemittancePage(driver);
         addNewRemittancePageObject.chooseIdenTypeForSender();
         addNewRemittancePageObject.insertSenderID();
         addNewRemittancePageObject.searchForSenderID();
         Thread.sleep(2000);
         wait.until(ExpectedConditions.visibilityOf(addNewRemittancePageObject.receiverIdenTypeDDL));
-        addNewRemittancePageObject = new Remittances_AddNewRemittancePage(driver);
         addNewRemittancePageObject.chooseIdenTypeForReceiver();
         Thread.sleep(2000);
         wait.until(ExpectedConditions.visibilityOf(addNewRemittancePageObject.receiverIDTxtBox));
@@ -75,5 +119,4 @@ public class Remittances_AddNewRemittancetest extends Remittances_TestBase
         driver.close();
         driver.switchTo().window(originalWindow);
     }
-    }
-
+}

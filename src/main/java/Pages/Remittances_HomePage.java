@@ -1,6 +1,5 @@
 package Pages;
 
-import dev.failsafe.internal.util.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,9 +17,33 @@ public class Remittances_HomePage extends PageBase
 
     @FindBy(xpath = "//*[@id=\"ctl00__btnNewRemittance\"]")
     public WebElement addNewRemittanceBtn;
+    
+    @FindBy(xpath = "//*[@id=\"txt_FromDt\"]")
+    public WebElement reportDateField;
+    
+    @FindBy(xpath = "//*[@id=\"ctl00_ContentPlaceHolder1_Button1\"]")
+    public WebElement showReportBtn;
+    
+    @FindBy(xpath = "//*[@id=\"_cmboxReportType\"]")
+    WebElement reportTypeDDL;
+    
+    @FindBy(xpath = "//*[@id=\"ctl00__btnMainForm\"]")
+    public WebElement instantCashingOrRefundingOfRemittancesBtn;
 
     public void AddNewRemittance()
     {
         clickButton(addNewRemittanceBtn);
+    }
+    
+    public void displayTheEndDayReportofExportedRemittances(String reportType)
+    {
+    	Select selectReportType = new Select(reportTypeDDL);
+    	selectReportType.selectByVisibleText(reportType);
+    	clickButton(showReportBtn);
+    }
+    
+    public void cashingOrRefundingRemittances()
+    {
+    	clickButton(instantCashingOrRefundingOfRemittancesBtn);
     }
 }
