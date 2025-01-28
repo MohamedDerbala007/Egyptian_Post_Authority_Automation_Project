@@ -29,6 +29,12 @@ public class Remittances_HomePage extends PageBase
     
     @FindBy(xpath = "//*[@id=\"ctl00__btnMainForm\"]")
     public WebElement instantCashingOrRefundingOfRemittancesBtn;
+    
+    @FindBy(xpath = "//*[@id=\"ctl00_hyp_logout\"]")
+    public WebElement logoutBtn;
+    
+    @FindBy(xpath = "//*[@id=\"ctl00_hyp_rep\"]")
+    public WebElement reportsBtn;
 
     public void AddNewRemittance()
     {
@@ -45,5 +51,15 @@ public class Remittances_HomePage extends PageBase
     public void cashingOrRefundingRemittances()
     {
     	clickButton(instantCashingOrRefundingOfRemittancesBtn);
+    }
+    
+    public void userLogOut()
+    {
+    	clickButton(logoutBtn);
+    }
+    
+    public void openReportsPage()
+    {
+    	clickButton(reportsBtn);
     }
 }

@@ -6,11 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class Remittances_AddNewRemittancePage extends PageBase
-{
+public class Remittances_AddNewRemittancePage extends PageBase {
 
-    public Remittances_AddNewRemittancePage(WebDriver driver)
-    {
+    public Remittances_AddNewRemittancePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -48,56 +46,52 @@ public class Remittances_AddNewRemittancePage extends PageBase
     @FindBy(xpath = "//*[@id=\"Table_01\"]/center/table")
     public WebElement transactionReceipt;
 
-    public void chooseIdenTypeForSender()
-    {
+    public void chooseIdenTypeForSender() {
         Select select = new Select(senderIdenTypeDDL);
         select.selectByValue("1");
     }
 
-    public void insertSenderID()
-    {
-        senderIDTxtBox.sendKeys("29802261801751");
+    // Modify insertSenderID to accept a dynamic senderID
+    public void insertSenderID(String senderID) {
+        senderIDTxtBox.clear();  // Clear any existing value
+        senderIDTxtBox.sendKeys(senderID);  // Insert the dynamic sender ID
     }
 
-    public void searchForSenderID()
-    {
+    public void searchForSenderID() {
         clickButton(senderIDSearchBtn);
     }
 
-    public void chooseIdenTypeForReceiver()
-    {
+    public void chooseIdenTypeForReceiver() {
         Select select = new Select(receiverIdenTypeDDL);
         select.selectByValue("2");
     }
 
-    public void insertReceiverID()
-    {
-        receiverIDTxtBox.sendKeys("1234");
+    // Modify insertReceiverID to accept a dynamic receiverID
+    public void insertReceiverID(String receiverID) {
+        receiverIDTxtBox.clear();  // Clear any existing value
+        receiverIDTxtBox.sendKeys(receiverID);  // Insert the dynamic receiver ID
     }
 
-    public void searchForReceiverID()
-    {
+    public void searchForReceiverID() {
         clickButton(receiverIDSearchBtn);
     }
 
-    public void insertTheBigValueofTheAmount()
-    {
-        bigValueTxtBox.sendKeys("5000");
+    // Modify insertTheBigValueofTheAmount to accept a dynamic amount
+    public void insertTheBigValueofTheAmount(String amount) {
+        bigValueTxtBox.clear();  // Clear any existing value
+        bigValueTxtBox.sendKeys(amount);  // Insert the dynamic amount
     }
 
-    public void confirmTheAmount()
-    {
+    public void confirmTheAmount() {
         clickButton(amountConfirmationBtn);
     }
 
-    public void chooseReasonForTheTransaction()
-    {
+    public void chooseReasonForTheTransaction() {
         Select select = new Select(reasonForTheTransactionDDL);
-        select.selectByValue("6");
+        select.selectByValue("6");  // Assuming '6' is the reason value
     }
 
-    public void submitTheRemittanceTransaction()
-    {
+    public void submitTheRemittanceTransaction() {
         clickButton(submitBtn);
     }
 }
