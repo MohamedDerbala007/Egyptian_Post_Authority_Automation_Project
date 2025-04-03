@@ -1,5 +1,7 @@
 package TestBases;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -11,6 +13,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -121,4 +126,13 @@ public class CashCollections_TestBase {
     public WebDriver getDriver() {
         return driver;
     }
+    
+    public String getScreenShotPath(String testCaseName, ChromeDriver driver) throws IOException
+	{
+		File source = driver.getScreenshotAs(OutputType.FILE);
+		String destinationFile = System.getProperty("user.dir") + "\\reports\\" + testCaseName + ".png";
+		FileUtils.copyFile(source, new File(destinationFile));
+		return destinationFile;
+	}
+    
 }

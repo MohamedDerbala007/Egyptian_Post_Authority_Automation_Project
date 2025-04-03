@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="Suite">
+<listeners>
+<listener class-name = "utils.CashCollection_Listeners"/>
+</listeners>
+  <test name="Test">
+    <classes>
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config1"/>
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config2"/>
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config3"/>
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config4"/>
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config1_Fixed"/>
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config2_Fixed"/>
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config3_Fixed"/>
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config4_Fixed"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

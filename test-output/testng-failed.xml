@@ -1,15 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite thread-count="8" parallel="tests" name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="utils.CashCollection_Listeners"/>
+  </listeners>
+  <test thread-count="8" parallel="tests" name="Test(failed)">
     <classes>
-      <class name="Tests.Remittances_TheEndDayReportofExportedRemittancesDisplayTheCorrectDataTest">
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config2">
         <methods>
-          <include name="dataIsDisplayedCorrectlyInTheEndDayReportofExportedRemittances"/>
-          <include name="startDriver"/>
           <include name="stopDriver"/>
+          <include name="startDriver"/>
+          <include name="userCanAddNewCashCollectionSuccessfully"/>
         </methods>
-      </class> <!-- Tests.Remittances_TheEndDayReportofExportedRemittancesDisplayTheCorrectDataTest -->
+      </class> <!-- Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config2 -->
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config3_Fixed">
+        <methods>
+          <include name="stopDriver"/>
+          <include name="userCanAddNewCashCollectionSuccessfully"/>
+          <include name="startDriver"/>
+        </methods>
+      </class> <!-- Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config3_Fixed -->
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config1_Fixed">
+        <methods>
+          <include name="stopDriver"/>
+          <include name="userCanAddNewCashCollectionSuccessfully"/>
+          <include name="startDriver"/>
+        </methods>
+      </class> <!-- Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config1_Fixed -->
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config3">
+        <methods>
+          <include name="stopDriver"/>
+          <include name="startDriver"/>
+          <include name="userCanAddNewCashCollectionSuccessfully"/>
+        </methods>
+      </class> <!-- Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config3 -->
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config4_Fixed">
+        <methods>
+          <include name="stopDriver"/>
+          <include name="startDriver"/>
+          <include name="userCanAddNewCashCollectionSuccessfully"/>
+        </methods>
+      </class> <!-- Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config4_Fixed -->
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config1">
+        <methods>
+          <include name="stopDriver"/>
+          <include name="startDriver"/>
+          <include name="userCanAddNewCashCollectionSuccessfully"/>
+        </methods>
+      </class> <!-- Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config1 -->
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config2_Fixed">
+        <methods>
+          <include name="stopDriver"/>
+          <include name="startDriver"/>
+          <include name="userCanAddNewCashCollectionSuccessfully"/>
+        </methods>
+      </class> <!-- Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config2_Fixed -->
+      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config4">
+        <methods>
+          <include name="stopDriver"/>
+          <include name="startDriver"/>
+          <include name="userCanAddNewCashCollectionSuccessfully"/>
+        </methods>
+      </class> <!-- Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config4 -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
