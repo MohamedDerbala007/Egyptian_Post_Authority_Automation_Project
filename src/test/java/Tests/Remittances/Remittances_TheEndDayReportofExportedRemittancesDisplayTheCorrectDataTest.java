@@ -25,7 +25,7 @@ public class Remittances_TheEndDayReportofExportedRemittancesDisplayTheCorrectDa
     private Remittances_DataOfExportedRemittancesReportPage dataOfExportedRemittancesReportPageObject;
     private Remittances_ReportsPage reportsPageObject;
 
-    private final String userName = "عمر ابراهيم احمد";
+    private final String userName = "محمد جمال حربي";
     private final String password = "q1234567890";
     private final String reportType = "نهاية اليوم)الحوالات المصدرة 6 حوالات فورية)";
     private final String fromDate = "05-01-2025";

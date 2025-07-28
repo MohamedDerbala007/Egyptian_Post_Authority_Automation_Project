@@ -36,12 +36,21 @@ public class Remittances_CashingOrRefundingRemittancesPage extends PageBase
     @FindBy(xpath = "//*[@id=\"ctl00_ContentPlaceHolder1_btn_ser\"]")
     public WebElement searchBtn;
     
-    public void searchForInstantRemittance()
+    public void searchForInstantRemittanceForSender()
     {
     	clickButton(senderRadioBtn);
     	Select selectSenderIden = new Select(senderIdenTypeDDL);
     	selectSenderIden.selectByValue("1");;
     	setTextInElementTextBox(senderIDTxtBox, "29802261801751");
+    	clickButton(searchBtn);
+    }
+    
+    public void searchForInstantRemittanceForReceiver()
+    {
+    	clickButton(receiverRadioBtn);
+    	Select selectReceiverIden = new Select(receiverIdenTypeDDL);
+    	selectReceiverIden.selectByValue("2");;
+    	setTextInElementTextBox(receiverIDTxtBox, "1234");
     	clickButton(searchBtn);
     }
     

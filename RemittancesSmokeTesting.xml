@@ -6,7 +6,11 @@
   <test name="Test">
     <classes>
       <class name="Tests.Remittances_AddNewRemittancetest"/>
+      <class name="Tests.Remittances_TheEndDayReportofExportedRemittancesDisplayTheCorrectDataTest"/>
+      <class name="Tests.Remittances_CashingOutRemittancetest"/>
+      <class name="Tests.Remittances_RefundingRemittancetest"/>
       <class name="Tests.Remittances_TheEndDayReportofExportedRemittancesDisplayTheCorrectDataTest"/> 
+      <class name="Tests.Remittances_TheEndDayReportofCashedOutAndReffundedRemittancesDisplayTheCorrectDataTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

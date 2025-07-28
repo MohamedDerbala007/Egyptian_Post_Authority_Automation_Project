@@ -23,16 +23,16 @@ public class Remittances_DetailsOfSearchedRemittancesPage extends PageBase
 	public WebElement reprintRemittanceRecieptBtn;
 	
 	@FindBy(xpath = "//*[@id=\"ctl00_ContentPlaceHolder1_txtReceiverMobileNumber\"]")
-	public WebElement receiverPhoneNumberTxtbox;
+	public WebElement receiverAndSenderPhoneNumberTxtbox;
 	
 	@FindBy(xpath = "//*[@id=\"_cmbUserNationalIds\"]")
-	public WebElement receiverIdenTypeDDL;
+	public WebElement receiverAndSenderIdenTypeDDL;
 	
 	@FindBy(xpath = "//*[@id=\"ctl00_ContentPlaceHolder1_txtReceiverNationalID\"]")
-	public WebElement receiverIdenTypeTxtbox;
+	public WebElement receiverAndSenderIdenTypeTxtbox;
 	
 	@FindBy(xpath = "//*[@id=\"_btnNationalIdSearch\"]")
-	public WebElement receiverIdenSearchBtn;
+	public WebElement receiverAndSenderIdenSearchBtn;
 	
 	public void refundRemittance()
 	{
@@ -51,13 +51,25 @@ public class Remittances_DetailsOfSearchedRemittancesPage extends PageBase
 	
 	public void selectReceiverType()
 	{
-		Select select = new Select(receiverIdenTypeDDL);
-		select.selectByValue("1");
+		Select select = new Select(receiverAndSenderIdenTypeDDL);
+		select.selectByValue("2");
 	}
 	
 	public void insertReceiverIdenNo()
 	{
-		receiverIdenTypeTxtbox.sendKeys("29802261801751");
-		clickButton(receiverIdenSearchBtn);
+		receiverAndSenderIdenTypeTxtbox.sendKeys("1234");
+		clickButton(receiverAndSenderIdenSearchBtn);
+	}
+	
+	public void selectSenderType()
+	{
+		Select select = new Select(receiverAndSenderIdenTypeDDL);
+		select.selectByValue("1");
+	}
+	
+	public void insertSenderIdenNo()
+	{
+		receiverAndSenderIdenTypeTxtbox.sendKeys("29802261801751");
+		clickButton(receiverAndSenderIdenSearchBtn);
 	}
 }

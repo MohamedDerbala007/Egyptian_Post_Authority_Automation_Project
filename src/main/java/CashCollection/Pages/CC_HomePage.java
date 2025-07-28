@@ -15,9 +15,17 @@ public class CC_HomePage extends CC_PageBase
 	@FindBy(xpath = "//*[@id=\"ctl00_HyperLink4\"]")
     public WebElement addNewCashCollectionBtn;
 	
+	@FindBy(xpath = "//*[@id=\"ctl00_HyperLink6\"]")
+    public WebElement endDayReportBtn;
+	
 	public void openNewCashCollectionPage()
 	{
 		clickButton(addNewCashCollectionBtn);
+	}
+	
+	public void openEndDayReportPage()
+	{
+		clickButton(endDayReportBtn);
 	}
 
 }

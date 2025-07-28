@@ -13,6 +13,7 @@
       <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config2_Fixed"/>
       <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config3_Fixed"/>
       <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config4_Fixed"/>
+      
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

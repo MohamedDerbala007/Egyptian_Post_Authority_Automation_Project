@@ -30,7 +30,7 @@ public class Remittances_TheEndDayReportofCashedOutAndReffundedRemittancesDispla
     Remittances_ExportedRemittancesReportPage exportedRemittancesReportPageObject;
     Remittances_DataOfCashingOrRefundingRemittancesReportPage dataOfCashingOrRefundingRemittancesReportPageObject;
     Remittances_ReportsPage reportsPageObject;
-    String userName = "عمر ابراهيم احمد";
+    String userName = "محمد جمال حربي";
     String password = "q1234567890";
     String reportType = "نهاية اليوم)الحوالات المصروفة والمستردة 8 حوالات فورية)";
     String fromDate = "05-01-2025";

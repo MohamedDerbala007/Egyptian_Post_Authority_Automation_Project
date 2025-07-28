@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config4">
+      <class name="Tests.Remittances.Remittances_TheEndDayReportofCashedOutAndReffundedRemittancesDisplayTheCorrectDataTest">
         <methods>
-          <include name="stopDriver"/>
           <include name="startDriver"/>
-          <include name="userCanAddNewCashCollectionSuccessfully"/>
+          <include name="dataIsDisplayedCorrectlyInTheReports"/>
+          <include name="stopDriver"/>
         </methods>
-      </class> <!-- Tests.CashCollection.CashCollection_AddNewCashCollectiontest_Config4 -->
+      </class> <!-- Tests.Remittances.Remittances_TheEndDayReportofCashedOutAndReffundedRemittancesDisplayTheCorrectDataTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

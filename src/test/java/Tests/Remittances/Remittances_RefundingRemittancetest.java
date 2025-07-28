@@ -24,7 +24,7 @@ public class Remittances_RefundingRemittancetest extends Remittances_TestBase {
 	Remittances_SearchedRemittancesPage remittances_SearchedRemittancesObjet;
 	Remittances_DetailsOfSearchedRemittancesPage remittances_DetailsOfSearchedRemittancesObject;
     
-    String userName = "عمر ابراهيم احمد";
+    String userName = "محمد جمال حربي";
     String password = "q1234567890";
 
     @Test
@@ -40,13 +40,13 @@ public class Remittances_RefundingRemittancetest extends Remittances_TestBase {
         homePageObject.cashingOrRefundingRemittances();
         cashingOrRefundingRemittancesPageObject = new Remittances_CashingOrRefundingRemittancesPage(driver);
         wait.until(ExpectedConditions.visibilityOf(cashingOrRefundingRemittancesPageObject.senderIdenTypeDDL));
-        cashingOrRefundingRemittancesPageObject.searchForInstantRemittance();
+        cashingOrRefundingRemittancesPageObject.searchForInstantRemittanceForSender();
         remittances_SearchedRemittancesObjet = new Remittances_SearchedRemittancesPage(driver);
         remittances_SearchedRemittancesObjet.openTheSearchedRemittance();
         remittances_DetailsOfSearchedRemittancesObject = new Remittances_DetailsOfSearchedRemittancesPage(driver);
-		wait.until(ExpectedConditions.visibilityOf(remittances_DetailsOfSearchedRemittancesObject.receiverIdenSearchBtn));
-		remittances_DetailsOfSearchedRemittancesObject.selectReceiverType();
-		remittances_DetailsOfSearchedRemittancesObject.insertReceiverIdenNo();
+		wait.until(ExpectedConditions.visibilityOf(remittances_DetailsOfSearchedRemittancesObject.receiverAndSenderIdenSearchBtn));
+		remittances_DetailsOfSearchedRemittancesObject.selectSenderType();
+		remittances_DetailsOfSearchedRemittancesObject.insertSenderIdenNo();
 		remittances_DetailsOfSearchedRemittancesObject.refundRemittance();
 
 		Alert alert = driver.switchTo().alert();

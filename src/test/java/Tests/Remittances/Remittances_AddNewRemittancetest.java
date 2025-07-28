@@ -23,7 +23,7 @@ public class Remittances_AddNewRemittancetest extends Remittances_TestBase {
     Remittances_HomePage homePageObject;
     Remittances_AddNewRemittancePage addNewRemittancePageObject;
     Remittances_ExportedRemittancesReportPage exportedRemittancesReportPageObject;
-    String userName = "عمر ابراهيم احمد";
+    String userName = "محمد جمال حربي";
     String password = "q1234567890";
     String reportType = "نهاية اليوم)الحوالات المصدرة 6 حوالات فورية)";
     String excelFilePath = "E:\\Automation Projects\\Egyptian_Post_Authority_Automation_Project\\remittance_data.xlsx";
